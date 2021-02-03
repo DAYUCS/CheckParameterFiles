@@ -3,6 +3,7 @@
   "description": "Compare Directories",
   "main": "Main.xaml",
   "dependencies": {
+    "UiPath.Credentials.Activities": "[1.1.6479.13204]",
     "UiPath.Mail.Activities": "[1.9.5]",
     "UiPath.System.Activities": "[20.10.3]",
     "UiPath.UIAutomation.Activities": "[20.10.8]"

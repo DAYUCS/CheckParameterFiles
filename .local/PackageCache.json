@@ -145,6 +145,17 @@
         "C:\\Users\\dayudell\\.nuget\\packages\\uipath.vision/2.2.0\\lib/net461/UiPath.Vision.dll"
       ],
       "Path": "C:\\Users\\dayudell\\.nuget\\packages\\uipath.uiautomation.activities\\20.10.8"
+    },
+    {
+      "Package": {
+        "Id": "UiPath.Credentials.Activities",
+        "Version": "1.1.6479.13204"
+      },
+      "Assemblies": [
+        "C:\\Users\\dayudell\\.nuget\\packages\\credentialmanagement/1.0.2\\lib/net35/CredentialManagement.dll",
+        "C:\\Users\\dayudell\\.nuget\\packages\\uipath.credentials.activities/1.1.6479.13204\\lib/net40-client/UiPath.Credentials.Activities.dll"
+      ],
+      "Path": "C:\\Users\\dayudell\\.nuget\\packages\\uipath.credentials.activities\\1.1.6479.13204"
     }
   ],
   "Conflicts": [],
@@ -186,6 +197,11 @@
     "BouncyCastle": {
       "Id": "BouncyCastle",
       "Version": "1.8.5",
+      "Dependencies": []
+    },
+    "CredentialManagement": {
+      "Id": "CredentialManagement",
+      "Version": "1.0.2",
       "Dependencies": []
     },
     "CsvHelper": {
@@ -736,6 +752,16 @@
       "Version": "20.10.7641.24102",
       "Dependencies": []
     },
+    "UiPath.Credentials.Activities": {
+      "Id": "UiPath.Credentials.Activities",
+      "Version": "1.1.6479.13204",
+      "Dependencies": [
+        {
+          "Item1": "CredentialManagement",
+          "Item2": "[1.0.2, )"
+        }
+      ]
+    },
     "UiPath.Mail.Activities": {
       "Id": "UiPath.Mail.Activities",
       "Version": "1.9.5",
@@ -1022,6 +1048,16 @@
         "C:\\Users\\dayudell\\.nuget\\packages\\bouncycastle\\1.8.5\\lib\\BouncyCastle.Crypto.dll"
       ],
       "Path": "C:\\Users\\dayudell\\.nuget\\packages\\bouncycastle\\1.8.5"
+    },
+    {
+      "Package": {
+        "Id": "CredentialManagement",
+        "Version": "1.0.2"
+      },
+      "Assemblies": [
+        "C:\\Users\\dayudell\\.nuget\\packages\\credentialmanagement\\1.0.2\\lib\\net35\\CredentialManagement.dll"
+      ],
+      "Path": "C:\\Users\\dayudell\\.nuget\\packages\\credentialmanagement\\1.0.2"
     },
     {
       "Package": {
@@ -1529,6 +1565,16 @@
         "C:\\Users\\dayudell\\.nuget\\packages\\uipath\\20.10.7641.24102\\lib\\UiPath.Interop.dll"
       ],
       "Path": "C:\\Users\\dayudell\\.nuget\\packages\\uipath\\20.10.7641.24102"
+    },
+    {
+      "Package": {
+        "Id": "UiPath.Credentials.Activities",
+        "Version": "1.1.6479.13204"
+      },
+      "Assemblies": [
+        "C:\\Users\\dayudell\\.nuget\\packages\\uipath.credentials.activities\\1.1.6479.13204\\lib\\net40-client\\UiPath.Credentials.Activities.dll"
+      ],
+      "Path": "C:\\Users\\dayudell\\.nuget\\packages\\uipath.credentials.activities\\1.1.6479.13204"
     },
     {
       "Package": {
