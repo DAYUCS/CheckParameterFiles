@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1002,1642</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1002,1850</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CallFreeFileSync_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -59,9 +59,21 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CallFreeFileSync" sap:VirtualizedContainerService.HintSize="594,1537" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CallFreeFileSync" sap:VirtualizedContainerService.HintSize="594,1785" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="scg:IEnumerable(ui:TextInfo)" Name="TextInfo" />
+      <Variable x:TypeArguments="ui:GenericValue" Name="TextResult" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -126,9 +138,6 @@
               </ui:Click.Target>
             </ui:Click>
             <Sequence DisplayName="Screen Scraping" sap:VirtualizedContainerService.HintSize="476,567" sap2010:WorkflowViewState.IdRef="Sequence_7">
-              <Sequence.Variables>
-                <Variable x:TypeArguments="ui:GenericValue" Name="Text" />
-              </Sequence.Variables>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -141,9 +150,6 @@
                       <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                     </ActivityAction.Argument>
                     <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,329" sap2010:WorkflowViewState.IdRef="Sequence_6">
-                      <Sequence.Variables>
-                        <Variable x:TypeArguments="scg:IEnumerable(ui:TextInfo)" Name="TextInfo" />
-                      </Sequence.Variables>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -161,10 +167,10 @@
                           </ui:Target>
                         </ui:GetVisibleText.Target>
                         <ui:GetVisibleText.Text>
-                          <OutArgument x:TypeArguments="ui:GenericValue">[Text]</OutArgument>
+                          <OutArgument x:TypeArguments="ui:GenericValue">[TextResult]</OutArgument>
                         </ui:GetVisibleText.Text>
                       </ui:GetVisibleText>
-                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[Text]" />
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[TextResult.ToString]" />
                     </Sequence>
                   </ActivityAction>
                 </ui:WindowScope.Body>
@@ -174,6 +180,11 @@
         </ActivityAction>
       </ui:OpenApplication.Body>
     </ui:OpenApplication>
+    <If Condition="[TextResult.ToString.Trim.Equals(&quot;No files to synchronize&quot;)]" sap:VirtualizedContainerService.HintSize="552,208" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Else>
+        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Find the difference!&quot;]" />
+      </If.Else>
+    </If>
     <ui:CloseApplication DisplayName="Close Application 'freefilesync_x64.exe Fr...'" sap:VirtualizedContainerService.HintSize="552,106" sap2010:WorkflowViewState.IdRef="CloseApplication_1">
       <ui:CloseApplication.Target>
         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b74e4859-e663-42e6-9586-618d71db9b75" InformativeScreenshot="fbc574a036d1e56787a6ab3ab997f088" Selector="&lt;wnd app='freefilesync_x64.exe' cls='wxWindowNR' title='*FreeFileSync 11.5 – Folder Comparison and Synchronization' /&gt;">
